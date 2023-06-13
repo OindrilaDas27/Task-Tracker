@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
-
-import 'package:task_tracker/constants.dart';
 import 'package:task_tracker/reusable_widgets/FormInputCard.dart';
-import 'package:task_tracker/signUp.dart';
+import 'package:task_tracker/constants.dart';
+import 'package:task_tracker/login.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,41 +24,25 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Login',
+                'Create account',
                 style: TextStyle(
-                  fontSize: 55,
+                  fontSize: 45,
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.none,
                   color: primary_theme,
                 ),
               ),
               Divider(height: 30.0,),
+              InputFormCard(text: 'Enter name'),
               InputFormCard(text: 'Enter email'),
               InputFormCard(text: 'Enter password'),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'or log in with',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    SignInButton(
-                      Buttons.GoogleDark,
-                      onPressed: () {},
-                    )
-                  ],
-                ),
-              ),
+              InputFormCard(text: 'Confirm password'),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
                     Text(
-                      "Don't have an account?",
+                      "Already have an account?",
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -70,12 +52,12 @@ class _LoginState extends State<Login> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignUp(),
+                            builder: (context) => const Login(),
                           ),
                         );
                       },
                       child: const Text(
-                        'Register here',
+                        'Login here',
                         style: TextStyle(
                           color: primary_theme,
                           fontWeight: FontWeight.bold,
@@ -85,9 +67,11 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-              InputButton(text2: 'Login',
-                onPressed: () { },
-              )
+              Divider(height: 20.0,),
+              InputButton(
+
+                text2: 'Sign Up', onPressed: () {},
+              ),
             ],
           ),
         ),
